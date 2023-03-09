@@ -42,25 +42,30 @@ const ticTacToe = {
         document.getElementById('o').classList.toggle('selected')
     },
 
+    // image handler to make sure image renders before continuing
+    async loadImage(url, elem) {
+        return new Promise((resolve, reject) => {
+          elem.onload = () => resolve(elem);
+          elem.onerror = reject;
+          elem.src = url;
+        });
+      },
+
     // mark squares, set player record
-    markSquare() {
+    async markSquare() {
         if (ticTacToe.lastWinner) alert('Game already won!!')
         else if (!ticTacToe[this.id]) {
             const img = document.getElementById(`${this.id}`)
-            img.addEventListener('load', () => {
-            ticTacToe.checkWin(this.classList)
-            ticTacToe.changePlayer()
-            });
             if (ticTacToe.currentPlayer === 'x') {
                 ticTacToe[this.id] = 'x'
-                document.getElementById(`${this.id}`).src = '/img/plantX.jpg'
+                await ticTacToe.loadImage('/img/plantX.jpg', img);
             } else {
                 ticTacToe[this.id] = 'o'
-                document.getElementById(`${this.id}`).src = '/img/fireO.jpg'
+                await ticTacToe.loadImage('/img/fireO.jpg', img);
             }
 
-            // ticTacToe.checkWin(this.classList)
-            // ticTacToe.changePlayer()
+            ticTacToe.checkWin(this.classList)
+            ticTacToe.changePlayer()
 
         } else alert('Square already marked!')
     },
