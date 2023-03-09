@@ -158,6 +158,7 @@ img {
     } */
     .container {
         padding: 1em 0;
+        height: 95vh;
     }
     button {
         margin: 0;

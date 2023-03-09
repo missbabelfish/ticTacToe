@@ -46,6 +46,11 @@ const ticTacToe = {
     markSquare() {
         if (ticTacToe.lastWinner) alert('Game already won!!')
         else if (!ticTacToe[this.id]) {
+            const img = document.getElementById(`${this.id}`)
+            img.addEventListener('load', () => {
+            ticTacToe.checkWin(this.classList)
+            ticTacToe.changePlayer()
+            });
             if (ticTacToe.currentPlayer === 'x') {
                 ticTacToe[this.id] = 'x'
                 document.getElementById(`${this.id}`).src = '/img/plantX.jpg'
@@ -54,8 +59,8 @@ const ticTacToe = {
                 document.getElementById(`${this.id}`).src = '/img/fireO.jpg'
             }
 
-            ticTacToe.checkWin(this.classList)
-            ticTacToe.changePlayer()
+            // ticTacToe.checkWin(this.classList)
+            // ticTacToe.changePlayer()
 
         } else alert('Square already marked!')
     },
