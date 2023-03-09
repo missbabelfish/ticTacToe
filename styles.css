@@ -152,7 +152,20 @@ img {
     /* vertical-align: middle; */
 }
 
-@media (max-height: 600px) {
+@media (max-width: 400px) {
+    /* body {
+        background-color: whitesmoke !important;
+    } */
+    .container {
+        padding: 1em 0;
+    }
+    button {
+        margin: 0;
+    }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1400px) and (max-height: 600px) {
     .board {
         width: 350px;
         height: 350px;
@@ -179,3 +192,5 @@ img {
         margin: 2em 1em 0 3em;
     }
 }
+
+
