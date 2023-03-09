@@ -92,7 +92,7 @@ const ticTacToe = {
     ifWinner(currentPlayer) {
         ticTacToe.lastWinner = currentPlayer
         if (localStorage.getItem(`${ticTacToe.lastWinner} wins`) !== null) {
-            let wins = parseInt(localStorage.getItem(`${ticTacToe.lastWinner} wins`))
+            let wins = +(localStorage.getItem(`${ticTacToe.lastWinner} wins`))
             localStorage.setItem(`${ticTacToe.lastWinner} wins`, `${++wins}`)
         } else {
             localStorage.setItem(`${ticTacToe.lastWinner} wins`, `1`)
